@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Paddy & Farmers — warm earthy palette */
+    --background: 45 30% 96%;
+    --foreground: 30 35% 15%;
+
+    --card: 42 25% 98%;
+    --card-foreground: 30 35% 15%;
+
+    --popover: 42 25% 98%;
+    --popover-foreground: 30 35% 15%;
+
+    /* Rich golden paddy */
+    --primary: 38 75% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Lush field green */
+    --secondary: 120 35% 32%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 40 20% 90%;
+    --muted-foreground: 30 15% 42%;
+
+    /* Deep soil brown */
+    --accent: 25 50% 30%;
+    --accent-foreground: 45 30% 96%;
+
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 38 18% 82%;
+    --input: 38 18% 85%;
+    --ring: 38 75% 45%;
+
+    --radius: 0.5rem;
+
+    /* Custom tokens — paddy & earth */
+    --gradient-primary: linear-gradient(135deg, hsl(38, 75%, 45%), hsl(48, 90%, 58%));
+    --gradient-hero: linear-gradient(160deg, hsl(25, 50%, 18%) 0%, hsl(30, 40%, 15%) 50%, hsl(120, 25%, 15%) 100%);
+    --gradient-earth: linear-gradient(135deg, hsl(25, 50%, 30%) 0%, hsl(38, 75%, 45%) 100%);
+    --shadow-soft: 0 4px 20px -2px hsl(25 50% 30% / 0.12);
+    --shadow-medium: 0 8px 30px -4px hsl(25 50% 30% / 0.2);
+
+    --sidebar-background: 42 25% 97%;
+    --sidebar-foreground: 30 35% 20%;
+    --sidebar-primary: 30 35% 15%;
+    --sidebar-primary-foreground: 42 25% 98%;
+    --sidebar-accent: 40 20% 93%;
+    --sidebar-accent-foreground: 30 35% 15%;
+    --sidebar-border: 38 15% 88%;
+    --sidebar-ring: 38 75% 45%;
+  }
+
+  .dark {
+    --background: 30 25% 8%;
+    --foreground: 42 20% 92%;
+
+    --card: 30 22% 11%;
+    --card-foreground: 42 20% 92%;
+
+    --popover: 30 22% 11%;
+    --popover-foreground: 42 20% 92%;
+
+    --primary: 38 75% 48%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 120 30% 35%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 30 18% 18%;
+    --muted-foreground: 42 15% 55%;
+
+    --accent: 25 45% 32%;
+    --accent-foreground: 42 20% 92%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 30 18% 18%;
+    --input: 30 18% 20%;
+    --ring: 38 75% 48%;
+
+    --sidebar-background: 30 25% 8%;
+    --sidebar-foreground: 42 18% 90%;
+    --sidebar-primary: 38 75% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 30 18% 14%;
+    --sidebar-accent-foreground: 42 18% 90%;
+    --sidebar-border: 30 18% 14%;
+    --sidebar-ring: 38 75% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer utilities {
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slide-in-left {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes slide-in-right {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes scale-in {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes bounce-gentle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes sway {
+    0%, 100% { transform: rotate(-2deg); }
+    50% { transform: rotate(2deg); }
+  }
+
+  .animate-fade-in { animation: fade-in 1s ease-out; }
+  .animate-slide-in-left { animation: slide-in-left 0.8s ease-out; }
+  .animate-slide-in-right { animation: slide-in-right 0.8s ease-out; }
+  .animate-scale-in { animation: scale-in 0.6s ease-out; }
+  .animate-bounce-gentle { animation: bounce-gentle 2s ease-in-out infinite; }
+  .animate-sway { animation: sway 3s ease-in-out infinite; }
+
+  /* Button press animation */
+  @keyframes btn-press {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+  }
+
+  @keyframes btn-shine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  .btn-animated {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .btn-animated:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px -3px hsl(var(--primary) / 0.4);
+  }
+  .btn-animated:active {
+    animation: btn-press 0.2s ease-out;
+    transform: translateY(0);
+  }
+  .btn-animated::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.15), transparent);
+    pointer-events: none;
+    transition: none;
+  }
+  .btn-animated:hover::after {
+    animation: btn-shine 0.6s ease-out;
+  }
+
+  .btn-outline-animated {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .btn-outline-animated:hover {
+    transform: translateY(-2px);
+    border-color: hsl(var(--primary));
+    color: hsl(var(--primary));
+    box-shadow: 0 4px 12px -3px hsl(var(--primary) / 0.2);
+  }
+  .btn-outline-animated:active {
+    animation: btn-press 0.2s ease-out;
+    transform: translateY(0);
+  }
+
+  .transition-smooth { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .hover-lift:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: var(--shadow-medium);
+  }
+
+  .hover-glow {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .hover-glow:hover {
+    box-shadow: var(--shadow-medium);
+  }
+
+  /* Grain texture overlay */
+  .grain-texture::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+}
